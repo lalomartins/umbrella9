@@ -59,6 +59,7 @@ app.configure('production', function() {
 
 var routes = require('./routes');
 app.get('/', routes.index);
+app.get('/:project', routes.project);
 
 // Start
 

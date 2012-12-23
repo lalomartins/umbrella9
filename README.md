@@ -25,10 +25,6 @@ How to use it in a nutshell
 TODO
 ----
 
-- Project tabs
-
-- Project metadata UI
-
 - Start Cloud9
 
 - Shut down Cloud9 on “Quit”
@@ -41,7 +37,7 @@ TODO
 
 - Notify client of registry changes
 
-- Project CRUD
+- Project CRUD (also nicer-looking UI)
 
 - Shared Cloud9 settings
 

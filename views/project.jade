@@ -1,0 +1,13 @@
+extends master
+
+block content
+    .project-ui
+
+        h1= title
+        p Sources at #{project.root}
+        p
+            if project.pid
+                | Running
+            else
+                | Runs
+            | on port #{project.port}

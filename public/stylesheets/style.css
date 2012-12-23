@@ -12,9 +12,11 @@ h1{font-size:300%}
 h2{font-size:250%}
 h3{font-size:200%}
 h4{font-size:150%}
-div#tabs{background-color:#ddd;height:21px;}
-div#tabs a.tab,div#tabs a.active{display:inline-block;text-decoration:none;padding:2px 3px;margin:3px 5px}
+div#tabs{background-color:#d0d0d4;height:21px;}
+div#tabs a.tab,div#tabs a.active{display:inline-block;text-decoration:none;padding:2px 3px;margin:3px 5px;-webkit-border-top-left-radius:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;border-top-right-radius:3px;}
 div#tabs a.tab{color:#0679dc}
-div#tabs a.active{background-color:#49a8fa;color:#f1f1ff}
+div#tabs a.active{background-color:#49a8fa;color:#f1f1ff;cursor:default}
 .wrapper{position:absolute;top:23px;left:0;right:0;bottom:0}
-iframe.project-window{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#ffc0cb}
+iframe.project-window{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#a4a0a0;cursor:default}
+.project-ui{margin:20px;padding:10px;min-height:300px;background-color:#d0d0d4;color:#000010;-webkit-border-radius:3px;border-radius:3px;}
+.project-ui p{margin:3px 0}

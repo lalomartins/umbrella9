@@ -4,6 +4,9 @@ reset-html5()
 $cloudy-blue = #49A8FA
 $light-text = #F1F1FF
 $darker-blue = darken($cloudy-blue, 30%)
+$widget-grey = #d0d0d4
+$widget-black = #000010
+$nothing-grey = #a4a0a0
 
 body
     background-color $cloudy-blue
@@ -23,7 +26,7 @@ h4
     font-size 150%
 
 div#tabs
-    background-color #ddd
+    background-color $widget-grey
     height 21px
 
     a.tab,
@@ -32,6 +35,7 @@ div#tabs
         text-decoration none
         padding 2px 3px
         margin 3px 5px
+        border-radius top 3px
 
     a.tab
         color $darker-blue
@@ -39,6 +43,7 @@ div#tabs
     a.active
         background-color $cloudy-blue
         color $light-text
+        cursor default
 
 .wrapper
     position absolute
@@ -51,4 +56,16 @@ iframe.project-window
     absolute top left
     width 100%
     height 100%
-    background-color pink
+    background-color $nothing-grey
+    cursor default
+
+.project-ui
+    margin 20px
+    padding 10px
+    min-height 300px
+    background-color $widget-grey
+    color $widget-black
+    border-radius 3px
+
+    p
+        margin 3px 0
