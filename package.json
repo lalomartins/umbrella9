@@ -20,7 +20,8 @@
         "express": "2.5",
         "jade": "0.19",
         "stylus": "0.30",
-        "nib": "0.8"
+        "nib": "0.8",
+        "mkdirp": "0.3"
     },
     "devDependencies": {
         "zombie": "2",
@@ -37,9 +38,13 @@
         }
     ],
     "scripts": {
-        "start": "umbrella9.sh",
+        "start": "node app.js",
         "test": "cucumber.js tests/features",
         "bdd": "cucumber.js tests/features --format json | tests/report.js",
         "debug-tests": "node debug node_modules/.bin/cucumber.js tests/features"
+    },
+    "config": {
+        "address" : "localhost", 
+        "port" : "9900" 
     }
 }

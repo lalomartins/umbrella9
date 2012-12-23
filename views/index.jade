@@ -1,0 +1,13 @@
+extends master
+block content
+    h1= title
+    h2 Known projects:
+    each project in registry.projects
+        h3= project.name
+        p Sources at #{project.root}
+        p
+            if project.pid
+                | Running
+            else
+                | Runs
+            | on port #{project.port}
