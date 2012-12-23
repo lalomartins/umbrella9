@@ -1,0 +1,46 @@
+{
+    "name": "umbrella9",
+    "description": "Multi-project wrapper for local installations of Cloud9 IDE",
+    "keywords": [
+        "cloud9",
+        "editor",
+        "ide",
+    ],
+    "version": "0.1.0",
+    "author": "Lalo Martins <lalo.martins@gmail.com> (http://lalomartins.info)",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lalomartins/umbrella9.git"
+    },
+    "bugs": {
+        "url": "https://github.com/lalomartins/umbrella9/issues"
+    },
+    "bin": "umbrella9.sh",
+    "dependencies": {
+        "express": "2.5",
+        "jade": "0.19",
+        "stylus": "0.30",
+        "nib": "0.8",
+        "dbus-native": "0.0.5"
+    },
+    "devDependencies": {
+        "zombie": "2",
+        "cucumber": "0.3"
+    },
+    "engines": {
+        "node": "0.8",
+        "npm": "1"
+    },
+    "licenses": [
+        {
+            "type": "GPLv3",
+            "url": "http://www.gnu.org/copyleft/gpl.html"
+        }
+    ],
+    "scripts": {
+        "start": "umbrella9.sh",
+        "test": "cucumber.js tests/features",
+        "bdd": "cucumber.js tests/features --format json | tests/report.js",
+        "debug-tests": "node debug node_modules/.bin/cucumber.js tests/features"
+    }
+}
