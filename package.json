@@ -4,9 +4,9 @@
     "keywords": [
         "cloud9",
         "editor",
-        "ide",
+        "ide"
     ],
-    "version": "0.1.0",
+    "version": "0.0.1",
     "author": "Lalo Martins <lalo.martins@gmail.com> (http://lalomartins.info)",
     "repository": {
         "type": "git",
@@ -20,8 +20,7 @@
         "express": "2.5",
         "jade": "0.19",
         "stylus": "0.30",
-        "nib": "0.8",
-        "dbus-native": "0.0.5"
+        "nib": "0.8"
     },
     "devDependencies": {
         "zombie": "2",
