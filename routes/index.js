@@ -15,5 +15,17 @@ exports.project = function(req, res, next) {
     res.render('project', {
         title: project.name,
         project: project,
+        url: req.url,
     });
+};
+
+exports.project_ctl = function(req, res) {
+    var project = registry.projects[req.params.project];
+    var action = req.body.action;
+
+    switch(action) {
+        default:
+            req.flash('error', 'Unknown action "' + action + '"');
+    }
+    return res.redirect(req.url);
 };

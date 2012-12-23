@@ -44,7 +44,8 @@
         "debug-tests": "node debug node_modules/.bin/cucumber.js tests/features"
     },
     "config": {
-        "address" : "localhost", 
-        "port" : "9900" 
+        "address" : "localhost",
+        "port" : "9900",
+        "cloud9_executable": "cloud9"
     }
 }

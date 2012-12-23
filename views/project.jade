@@ -1,6 +1,11 @@
 extends master
 
 block content
+    each error in flash.error
+        p.flash-error= error
+    each info in flash.info
+        p.flash-info= info
+
     .project-ui
 
         h1= title
@@ -11,3 +16,5 @@ block content
             else
                 | Runs
             | on port #{project.port}
+        form(action=url, method='POST')
+            button(name="action", value="start") Start it

@@ -60,6 +60,13 @@ app.configure('production', function() {
 var routes = require('./routes');
 app.get('/', routes.index);
 app.get('/:project', routes.project);
+app.post('/:project', routes.project_ctl);
+
+app.dynamicHelpers({
+    flash: function(req, res) {
+        return {'info': req.flash('info'), 'error': req.flash('error')};
+    }
+});
 
 // Start
 
