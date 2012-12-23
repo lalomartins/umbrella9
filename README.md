@@ -39,6 +39,8 @@ TODO
 
 - RELEASE 0.1
 
+- Notify client of registry changes
+
 - Project CRUD
 
 - Shared Cloud9 settings

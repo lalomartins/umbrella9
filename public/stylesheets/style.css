@@ -1,7 +1,20 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-a {
-  color: #00b7ff;
-}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;font-family:inherit;font-size:100%;vertical-align:baseline}
+body{line-height:1;color:#000;background:#fff}
+ol,ul{list-style:none}
+table{border-collapse:separate;border-spacing:0;vertical-align:middle}
+caption,th,td{text-align:left;font-weight:normal;vertical-align:middle}
+a img{border:none}
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{margin:0;padding:0;border:0;outline:0;display:block}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1}
+audio:not([controls]),[hidden]{display:none}
+body{background-color:#49a8fa;color:#f1f1ff;overflow:hidden}
+h1{font-size:300%}
+h2{font-size:250%}
+h3{font-size:200%}
+h4{font-size:150%}
+div#tabs{background-color:#ddd;height:21px;}
+div#tabs a.tab,div#tabs a.active{display:inline-block;text-decoration:none;padding:2px 3px;margin:3px 5px}
+div#tabs a.tab{color:#0679dc}
+div#tabs a.active{background-color:#49a8fa;color:#f1f1ff}
+.wrapper{position:absolute;top:23px;left:0;right:0;bottom:0}
+iframe.project-window{position:absolute;top:0;left:0;width:100%;height:100%;background-color:#ffc0cb}

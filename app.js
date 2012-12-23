@@ -1,5 +1,7 @@
 var express = require('express');
 var app = module.exports = express.createServer();
+var stylus = require('stylus');
+var nib = require('nib');
 
 var registry = require('./registry');
 
@@ -13,8 +15,17 @@ app.configure(function() {
     app.use(express.session({
         secret: 'not very secret, should put in config?'
     }));
-    app.use(require('stylus').middleware({
-        src: __dirname + '/public'
+    app.use(stylus.middleware({
+        src: __dirname + '/public',
+        compile: function stylus_compile(str, path) {
+            return stylus(str)
+                .set('filename', path)
+                // TODO: it would be nice to turn off compress only on dev mode
+                .set('compress', true)
+                .set('force', true)
+                .use(nib())
+                .import('nib');
+        }
     }));
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
