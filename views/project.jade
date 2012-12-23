@@ -1,9 +1,11 @@
 extends master
 
 block content
-    each error in flash.error
+    errors = flash('error')
+    each error in errors
         p.flash-error= error
-    each info in flash.info
+    infos = flash('info')
+    each info in infos
         p.flash-info= info
 
     .project-ui

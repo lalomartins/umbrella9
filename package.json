@@ -17,11 +17,14 @@
     },
     "bin": "umbrella9.sh",
     "dependencies": {
-        "express": "2.5",
+        "express": "3",
+        "connect": "2",
         "jade": "0.19",
         "stylus": "0.30",
         "nib": "0.8",
-        "mkdirp": "0.3"
+        "mkdirp": "0.3",
+        "http-proxy": "0.8",
+        "connect-flash": "0.1"
     },
     "devDependencies": {
         "zombie": "2",
@@ -39,6 +42,7 @@
     ],
     "scripts": {
         "start": "node app.js",
+        "debug": "node debug app.js",
         "test": "cucumber.js tests/features",
         "bdd": "cucumber.js tests/features --format json | tests/report.js",
         "debug-tests": "node debug node_modules/.bin/cucumber.js tests/features"

@@ -46,3 +46,20 @@ exports.project_ctl = function(req, res) {
 
     return res.redirect(req.url);
 };
+
+exports.project_proxy = function(req, res, next) {
+    var req_parts = req.url.split('/');
+    if(req_parts.length < 2)
+        return next();
+
+    var project = registry.projects[req_parts[1]];
+    if(project === undefined)
+        return next();
+
+    if(project.child === null)
+        return next();
+    
+    //req.url = req.url.substr(project.name + 1);
+
+    return project.proxy.proxyRequest(req, res);
+};

@@ -4,6 +4,7 @@ var path = require('path');
 var child_process = require('child_process');
 var events = require('events');
 var mkdirp = require('mkdirp');
+var httpProxy = require('http-proxy');
 
 const executable = process.env.npm_package_config_cloud9_executable || 'cloud9';
 
@@ -20,6 +21,34 @@ function Project(name, json) {
     this.port = json.port;
     this.root = json.root;
     this.child = null;
+    // WARNING if you change the port by assignment, you have to also fix the proxy
+    this.proxy = new httpProxy.HttpProxy({
+        target: {
+            host: 'localhost',
+            port: this.port
+        }
+    });
+    this.proxy.on('proxyError', function(err, req, res) {
+        // do pretty much the same thing as http_proxy, but sending headers isn't really safe at this point
+        try {
+            res.writeHead(502, {'Content-Type': 'text/plain'});
+        }
+        catch (ex) {
+        }
+        if(process.env.NODE_ENV === 'production') {
+            res.write('Proxy Error');
+        }
+        else {
+            res.write('An error has occurred: ' + JSON.stringify(err));
+        }
+        try {
+            res.end();
+        }
+        catch (ex) {
+            console.error("res.end error: %s", ex.message);
+        }
+        return true;
+    });
 }
 util.inherits(Project, events.EventEmitter);
 

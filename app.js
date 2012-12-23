@@ -1,20 +1,23 @@
 var express = require('express');
-var app = module.exports = express.createServer();
 var stylus = require('stylus');
 var nib = require('nib');
+var flash = require('connect-flash');
 
 var registry = require('./registry');
+var routes = require('./routes');
 
 // Configuration
+var app = module.exports = express();
 app.configure(function() {
+    app.set('port', process.env.npm_package_config_port || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
+    app.use(routes.project_proxy);
+    app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
-    app.use(express.cookieParser());
-    app.use(express.session({
-        secret: 'not very secret, should put in config?'
-    }));
+    app.use(express.cookieParser('not very secret, should put in config?'));
+    app.use(express.session());
     app.use(stylus.middleware({
         src: __dirname + '/public',
         compile: function stylus_compile(str, path) {
@@ -27,6 +30,11 @@ app.configure(function() {
                 .import('nib');
         }
     }));
+    app.use(flash());
+    app.use(function(req, res, next) {
+        res.locals.flash = req.flash.bind(req);
+        next();
+    });
     app.use(app.router);
     app.use(express.static(__dirname + '/public'));
 });
@@ -57,19 +65,12 @@ app.configure('production', function() {
 
 // Routes
 
-var routes = require('./routes');
 app.get('/', routes.index);
 app.get('/:project', routes.project);
 app.post('/:project', routes.project_ctl);
 
-app.dynamicHelpers({
-    flash: function(req, res) {
-        return {'info': req.flash('info'), 'error': req.flash('error')};
-    }
-});
-
 // Start
 
-app.listen(process.env.npm_package_config_port, process.env.npm_package_config_address, function() {
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(app.get('port'), process.env.npm_package_config_address, function() {
+  console.log("Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
 });
