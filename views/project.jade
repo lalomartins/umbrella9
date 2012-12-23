@@ -11,10 +11,13 @@ block content
         h1= title
         p Sources at #{project.root}
         p
-            if project.pid
+            if project.child
                 | Running
             else
                 | Runs
             | on port #{project.port}
         form(action=url, method='POST')
-            button(name="action", value="start") Start it
+            if project.child
+                button(name="action", value="stop") Stop it
+            else
+                button(name="action", value="start") Start it

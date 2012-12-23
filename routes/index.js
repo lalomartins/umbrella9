@@ -23,9 +23,26 @@ exports.project_ctl = function(req, res) {
     var project = registry.projects[req.params.project];
     var action = req.body.action;
 
-    switch(action) {
-        default:
-            req.flash('error', 'Unknown action "' + action + '"');
+    switch (action) {
+    case 'start':
+        if(project.child !== null) {
+            req.flash('error', 'Project already running!');
+            break;
+        }
+        project.start();
+        break;
+
+    case 'stop':
+        if(project.child === null) {
+            req.flash('error', 'Project isn\'t running!');
+            break;
+        }
+        project.stop();
+        break;
+
+    default:
+        req.flash('error', 'Unknown action "' + action + '"');
     }
+
     return res.redirect(req.url);
 };

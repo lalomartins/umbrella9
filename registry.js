@@ -1,8 +1,11 @@
 var fs = require('fs');
 var util = require('util');
 var path = require('path');
-var mkdirp = require('mkdirp');
+var child_process = require('child_process');
 var events = require('events');
+var mkdirp = require('mkdirp');
+
+const executable = process.env.npm_package_config_cloud9_executable || 'cloud9';
 
 function Registry() {
     Registry.super_.call(this);
@@ -16,7 +19,7 @@ function Project(name, json) {
     this.name = name;
     this.port = json.port;
     this.root = json.root;
-    this.pid = null;
+    this.child = null;
 }
 util.inherits(Project, events.EventEmitter);
 
@@ -26,6 +29,24 @@ Project.prototype.toJSON = function toJSON() {
         root: this.root
     };
 };
+
+Project.prototype.start = function start() {
+    this.child = child_process.spawn(executable, ['-p', this.port, '-w', this.root]);
+    this.child.on('exit', this.stopped.bind(this));
+};
+
+Project.prototype.stop = function start() {
+    if(this.child) {
+        this.child.kill();
+    }
+};
+
+Project.prototype.stopped = function stopped(exit_code) {
+    console.log('process ' + this.name + ' stopped: ' + exit_code);
+    this.child = null;
+};
+
+
 
 Registry.prototype.update = function update(error, data) {
     if(error) {
@@ -53,7 +74,7 @@ Registry.prototype.update = function update(error, data) {
     var started_roots = {};
     for(var key in this.projects) {
         var project = this.projects[key];
-        if(project.pid) {
+        if(project.child !== null) {
             started_ports[project.port] = project;
             started_roots[project.root] = project;
         }
@@ -63,11 +84,11 @@ Registry.prototype.update = function update(error, data) {
         var project = this.projects[key] = new Project(key, data.projects[key]);
         if(started_ports[project.port] !== undefined &&
            started_roots[project.root] !== undefined &&
-           started_ports[project.port].pid == started_roots[project.root].pid) {
+           started_ports[project.port].child.pid == started_roots[project.root].child.pid) {
             if(project.name === started_ports[project.port].name)
                 project = this.projects[key] = started_ports[project.port];
             else
-                project.pid = started_ports[project.port].pid;
+                project.child = started_ports[project.port].child;
             delete started_ports[project.port];
             delete started_roots[project.root];
         }
