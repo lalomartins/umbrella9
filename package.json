@@ -23,7 +23,6 @@
         "stylus": "0.30",
         "nib": "0.8",
         "mkdirp": "0.3",
-        "http-proxy": "0.8",
         "connect-flash": "0.1"
     },
     "devDependencies": {

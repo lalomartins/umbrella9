@@ -12,7 +12,6 @@ app.configure(function() {
     app.set('port', process.env.npm_package_config_port || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
-    app.use(routes.project_proxy);
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());

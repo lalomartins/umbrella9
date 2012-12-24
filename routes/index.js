@@ -12,6 +12,9 @@ exports.project = function(req, res, next) {
     if(project === undefined)
         return next();
 
+    if(project.child !== null)
+        return res.redirect('http://localhost:' + project.port);
+
     res.render('project', {
         title: project.name,
         project: project,
@@ -45,21 +48,4 @@ exports.project_ctl = function(req, res) {
     }
 
     return res.redirect(req.url);
-};
-
-exports.project_proxy = function(req, res, next) {
-    var req_parts = req.url.split('/');
-    if(req_parts.length < 2)
-        return next();
-
-    var project = registry.projects[req_parts[1]];
-    if(project === undefined)
-        return next();
-
-    if(project.child === null)
-        return next();
-    
-    console.log('proxy ' + req.url);
-
-    return project.proxy.proxyRequest(req, res);
 };

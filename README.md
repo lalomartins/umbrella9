@@ -25,8 +25,6 @@ How to use it in a nutshell
 TODO
 ----
 
-- Start Cloud9
-
 - Shut down Cloud9 on “Quit”
 
 - Detect port conflicts
@@ -68,3 +66,8 @@ TODO
   - open file in “Other” mode
 
 - RELEASE 0.5
+
+Maybes
+------
+
+- Proxy for C9 rather than redirecting (requires that c9 can work from a non-root base URL, there's some progress there but it doesn't quite work)
