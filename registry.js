@@ -31,6 +31,12 @@ Project.prototype.toJSON = function toJSON() {
 };
 
 Project.prototype.start = function start() {
+    for(var name in registry.projects) {
+        if(name === this.name) continue;
+        var other = registry.projects[name];
+        if(other.port == this.port)
+            throw Error("Port conflict between " + this.name + " and " + name);
+    }
     this.child = child_process.spawn(executable, ['local', '-p', this.port, '-w', this.root, '-B', '/' + this.name]);
     this.child.on('exit', this.stopped.bind(this));
 };

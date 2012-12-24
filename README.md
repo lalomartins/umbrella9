@@ -25,8 +25,6 @@ How to use it in a nutshell
 TODO
 ----
 
-- Detect port conflicts
-
 - Plug into session management; shut down when session ends
 
 - RELEASE 0.1

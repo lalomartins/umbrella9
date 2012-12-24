@@ -32,7 +32,12 @@ exports.project_ctl = function(req, res) {
             req.flash('error', 'Project already running!');
             break;
         }
-        project.start();
+        try {
+            project.start();
+        } catch(error) {
+            req.flash('error', error.toString());
+            break;
+        }
         setTimeout(function() {
             return res.redirect('http://localhost:' + project.port);
         }, 1000);
