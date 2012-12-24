@@ -7,7 +7,7 @@ Umbrella9 is a manager for local Cloud9 IDE instances. It's designed to have two
 
 - Server: Run it with session management off and authentication on in a server for an experience similar to (but not nearly quite as cool as) the commercial Cloud9 offering.
 
-Currently only the client version is supported, and only on Linux (using dbus and freedesktop.org sessions). Pull requests accepted!
+Currently only the client version is supported, and only on Linux (using dbus for sessions). Pull requests accepted!
 
 How to use it in a nutshell
 ---------------------------
@@ -20,7 +20,7 @@ How to use it in a nutshell
 
 4. Click a project tab. If Cloud9 is already running for that project, it will just load in the tab. Otherwise, you'll be given a simple UI with minimal project metadata and the option to start Cloud9. Use Cloud9 normally.
 
-5. Closing Cloud9 (using the “Quit Cloud9 IDE”) will shut down that Cloud9 instance and return you to the project metadata UI.
+5. You can close each Cloud9 instance by clicking the X button on the top right.
 
 TODO
 ----
