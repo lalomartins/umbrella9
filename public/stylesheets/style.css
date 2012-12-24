@@ -15,6 +15,7 @@ h4{font-size:150%}
 .flash-info,.flash-error{margin:10px;padding:5px 10px;-webkit-border-radius:3px;border-radius:3px}
 .flash-info{background-color:#0679dc}
 .flash-error{background-color:#b02020}
+span#close{float:right;background-color:#49a8fa;color:#f1f1ff;margin:3px 0 3px 5px;padding:2px 3px;-webkit-border-top-left-radius:3px;border-top-left-radius:3px;cursor:pointer;display:none}
 div#tabs{background-color:#d0d0d4;height:21px;}
 div#tabs a.tab,div#tabs a.active{display:inline-block;text-decoration:none;padding:2px 3px;margin:3px 5px;-webkit-border-top-left-radius:3px;border-top-left-radius:3px;-webkit-border-top-right-radius:3px;border-top-right-radius:3px;}
 div#tabs a.tab{color:#0679dc}

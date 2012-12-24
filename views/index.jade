@@ -4,6 +4,7 @@ block append scripts
     script(src="/javascripts/main.js")
 
 block content
+    span#close(title="Shut down this IDE") X
     div#tabs
         - var first=true
         each project in registry.projects

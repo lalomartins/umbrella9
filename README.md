@@ -25,8 +25,6 @@ How to use it in a nutshell
 TODO
 ----
 
-- Shut down Cloud9 on “Quit”
-
 - Detect port conflicts
 
 - Plug into session management; shut down when session ends
@@ -71,3 +69,5 @@ Maybes
 ------
 
 - Proxy for C9 rather than redirecting (requires that c9 can work from a non-root base URL, there's some progress there but it doesn't quite work)
+
+- Shut down Cloud9 on “Quit” (requires either proxying, or hacking C9, or maybe some other fanciness)

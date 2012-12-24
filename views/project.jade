@@ -1,5 +1,9 @@
 extends master
 
+block append scripts
+    script
+        $(function() {frames.top.project_ping('#{project.name}');});
+
 block content
     errors = flash('error')
     each error in errors
