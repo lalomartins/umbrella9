@@ -60,7 +60,7 @@ Project.prototype.toJSON = function toJSON() {
 };
 
 Project.prototype.start = function start() {
-    this.child = child_process.spawn(executable, ['-p', this.port, '-w', this.root]);
+    this.child = child_process.spawn(executable, ['umbrella', '-p', this.port, '-w', this.root, '-B', '/' + this.name]);
     this.child.on('exit', this.stopped.bind(this));
 };
 

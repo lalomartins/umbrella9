@@ -10,5 +10,5 @@ block content
             a.tab(href=project.name, class=first ? 'active' : '')= project.name
             span.wrapper
                 iframe.project-window(id="iframe-" + project.name, src="/" + project.name,
-                                      style=first ? 'z-index: 30' : '')
+                                      style=first ? 'z-index: 30' : '', seamless="1")
             - first = false

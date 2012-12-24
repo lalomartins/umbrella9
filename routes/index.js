@@ -59,7 +59,7 @@ exports.project_proxy = function(req, res, next) {
     if(project.child === null)
         return next();
     
-    //req.url = req.url.substr(project.name + 1);
+    console.log('proxy ' + req.url);
 
     return project.proxy.proxyRequest(req, res);
 };
