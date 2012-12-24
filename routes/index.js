@@ -41,7 +41,7 @@ exports.project_ctl = function(req, res) {
         setTimeout(function() {
             return res.redirect('http://localhost:' + project.port);
         }, 1000);
-        break;
+        return;
 
     case 'stop':
         if(project.child === null) {

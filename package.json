@@ -6,7 +6,7 @@
         "editor",
         "ide"
     ],
-    "version": "0.0.1",
+    "version": "0.1.0",
     "author": "Lalo Martins <lalo.martins@gmail.com> (http://lalomartins.info)",
     "repository": {
         "type": "git",
@@ -23,7 +23,8 @@
         "stylus": "0.30",
         "nib": "0.8",
         "mkdirp": "0.3",
-        "connect-flash": "0.1"
+        "connect-flash": "0.1",
+        "libdbus": "git://github.com/lalomartins/node_libdbus.git#stable"
     },
     "devDependencies": {
         "zombie": "2",
@@ -48,7 +49,6 @@
     },
     "config": {
         "address" : "localhost",
-        "port" : "9900",
-        "cloud9_executable": "cloud9"
+        "port" : "9900"
     }
 }

@@ -2,6 +2,7 @@ var express = require('express');
 var stylus = require('stylus');
 var nib = require('nib');
 var flash = require('connect-flash');
+var dbus = require('libdbus');
 
 var registry = require('./registry');
 var routes = require('./routes');
@@ -73,3 +74,20 @@ app.post('/:project', routes.project_ctl);
 app.listen(app.get('port'), process.env.npm_package_config_address, function() {
   console.log("Express server listening on port %d in %s mode", app.get('port'), app.settings.env);
 });
+
+// Watch session
+var session_bus;
+try {
+    session_bus = dbus.sessionBus();
+} catch(error) {
+    session_bus = null;
+}
+if(session_bus)
+    setInterval(function() {
+        if(!session_bus.isConnected) {
+            registry.shutdown();
+            setTimeout(function() {
+                process.exit(0);
+            }, 1000);
+        }
+    }, 1000);
