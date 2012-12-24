@@ -1,3 +1,4 @@
 node_modules
 .c9revisions
 npm-debug.log
+.settings
